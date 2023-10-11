@@ -1,11 +1,13 @@
-package entities;
+	package entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca  {
-	private List<Livro> catalogo = new ArrayList<>();
-	
+	private List<Livro> catalogo;
+	public Biblioteca() {
+		catalogo = new ArrayList<>();
+	}
 	public void adicionarLivro(Livro livro) {
 		catalogo.add(livro);
 	}
@@ -22,12 +24,32 @@ public class Biblioteca  {
 		}
 		return result;
 	}
+
+	public boolean emprestarLivro(String isbn) {
+		for(Livro livro : catalogo){
+			 return livro.Reservar();
+			
+		}
+		return false;
+	}
+
+	public boolean devolverLivro(String isbn) {
+		for(Livro livro : catalogo) {
+			if(livro.getIsbn().equals(isbn)) {
+				livro.Devolver();
+			}
+		}
+		return false;
+
+	}
 	
 	public List<Livro> listarLivros(){
 		return catalogo;
 	}
 	
 	
+	
+
 	
 
 }

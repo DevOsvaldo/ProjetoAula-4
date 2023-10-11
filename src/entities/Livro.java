@@ -1,6 +1,6 @@
 package entities;
 
-public class Livro extends Catalogo {
+public class Livro {
  private String titulo;
  private String autor;
  private String isbn;
@@ -43,8 +43,9 @@ public boolean Reservar() {
 	if(!emprestado) {
 		emprestado = true;
 		return true;
-		}
+		} else {
 	return false;
+		}
 }
  
 public void Devolver() {
@@ -52,28 +53,11 @@ public void Devolver() {
 }
 
 public String Exibir_info() {
+	String statusLivro = emprestado ? " Emprestado" : " Disponivel";
 	return "Titulo: "+
-			titulo +", do autor "+autor+", ISBN: "+isbn;
+			titulo +", do autor "+autor+", ISBN: "+isbn+ statusLivro;
 }
  
-@Override
-public boolean emprestarLivro(String isbn) {
-	if(this.isbn.equals(isbn)) {
-		 return Reservar();
-		
-	}
-	return false;
-}
-@Override
-public boolean devolverLivro(String isbn) {
-	if(this.isbn.equals(isbn)) {
-		Devolver();
-		return true;
-	}
-	return false;
-	}
-
-
 
 }
 
